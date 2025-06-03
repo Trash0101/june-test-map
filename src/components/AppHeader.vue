@@ -154,4 +154,9 @@ $breakpoint-mobile: 768px;
     }
   }
 }
+@media (max-width: 480px) {
+  .header {
+    display: none;
+  }
+}
 </style>

@@ -3,6 +3,7 @@
     <div class="control-panel__header">
       <div class="control-panel__title-wrapper">
         <div class="control-panel__icon">🗺️</div>
+        <img alt="Logo" class="control-panel__logo" src="@/assets/logo.svg" width="32" height="32" />
         <h2 class="control-panel__title">Route Builder</h2>
       </div>
       <button class="control-panel__toggle" @click="toggleCollapse">
@@ -501,6 +502,10 @@ $warning-color: #ff9800;
 
   &__icon {
     font-size: 1.25rem;
+  }
+
+  &__logo {
+    display: none;
   }
 
   &__title {
@@ -1020,9 +1025,22 @@ $warning-color: #ff9800;
 
 @media (max-width: 480px) {
   .control-panel {
+    top: 10px;
     left: 10px;
     right: 10px;
     width: auto;
+    &__content {
+      max-height: calc(100vh - 10px);
+    }
+    &__icon {
+      display: none;
+    }
+    &__logo {
+      display: block;
+    }
+  }
+  .btn {
+    min-height: 50px;
   }
 
   .button-group:not(.button-group--vertical) {
@@ -1035,6 +1053,9 @@ $warning-color: #ff9800;
 
   .input-group {
     flex-direction: column;
+  }
+  .input-field {
+    min-height: 50px;
   }
 
   .drop-zone {

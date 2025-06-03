@@ -554,4 +554,9 @@ body {
   width: 100%;
   height: calc(100vh - 80px);
 }
+@media (max-width: 480px) {
+  #map {
+    height: 100vh;
+  }
+}
 </style>
