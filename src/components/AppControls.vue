@@ -63,6 +63,7 @@
 
         <!-- Drag & Drop зона -->
         <div
+          v-if="!geoJsonInfo"
           class="drop-zone"
           :class="{
             'drop-zone--active': isDragOver,
@@ -150,7 +151,7 @@
 
         <div v-if="points.length > 0" class="points-list">
           <div v-for="(point, index) in points" :key="index" class="point-item">
-            <div class="point-item__info">
+            <div v-if="point" class="point-item__info">
               <div class="point-item__label">Точка {{ index + 1 }}</div>
               <div class="point-item__coords">
                 {{ point.lat.toFixed(4) }}, {{ point.lng.toFixed(4) }}

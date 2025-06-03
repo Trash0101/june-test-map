@@ -41,6 +41,7 @@ import type {
   GeoJsonFeature,
   RouteResult, DijkstraResult
 } from "@/types/Map.ts";
+import customMarker from "@/utils/customMarker.ts";
 
 let map:L.Map | null = null
 const loading = ref(false)
@@ -86,7 +87,8 @@ const addPoint = (lat: number, lng: number) => {
   points.value.push(point)
   const marker = L.marker([lat, lng], {
     draggable: true,
-    title: `Точка ${points.value.length}`
+    title: `Точка ${points.value.length}`,
+    icon: customMarker()
   }).addTo(map!)
 
   marker.on('dragend', (e: L.DragEndEvent) => {
@@ -205,28 +207,6 @@ const generateTestRoads = (): GeoJsonData => {
       geometry: {
         type: "LineString",
         coordinates: coords
-      }
-    })
-  }
-
-  for (let i = 0; i < 5; i++) {
-    const startLat = center[0] - 0.05 + i * 0.025
-    const startLng = center[1] - 0.1
-    const endLat = center[0] + 0.05 - i * 0.025
-    const endLng = center[1] + 0.1
-
-    roads.push({
-      type: "Feature",
-      properties: {
-        name: `Диагональная дорога ${i + 1}`,
-        highway: "secondary"
-      },
-      geometry: {
-        type: "LineString",
-        coordinates: [
-          [startLng, startLat],
-          [endLng, endLat]
-        ]
       }
     })
   }
